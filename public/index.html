@@ -3,6 +3,12 @@
   <body>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script>
+
+      var url = (window.location.hostname.includes('localhost'))
+      ? 'http://localhost:3000/api/auth/google'
+      : 'https://rest-api-server-node-js.herokuapp.com/'
+
+      '
       function handleCredentialResponse(response) {
         console.log('Encoded JWT ID token: ' + response.credential);
       }
@@ -31,7 +37,7 @@
     <script>
       function handleCredentialResponse(response) {
         const body = { id_token: response.credential };
-        fetch('http://localhost:3000/api/auth/google', {
+        fetch(url, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
