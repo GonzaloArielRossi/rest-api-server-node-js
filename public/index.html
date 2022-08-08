@@ -1,12 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RESET SERVER API NODE JS v1</title>
-  </head>
+<html>
   <body>
-    <h1>RESET SERVER API NODE JS v1</h1>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script>
+      function handleCredentialResponse(response) {
+        console.log('Encoded JWT ID token: ' + response.credential);
+      }
+      window.onload = function () {
+        google.accounts.id.initialize({
+          client_id:
+            '722778184466-ilt0et74met0u1in6n0sfnijdqj9ccfe.apps.googleusercontent.com',
+          callback: handleCredentialResponse
+        });
+        google.accounts.id.renderButton(
+          document.getElementById('buttonDiv'),
+          { theme: 'outline', size: 'large' } // customization attributes
+        );
+        google.accounts.id.prompt(); // also display the One Tap dialog
+      };
+    </script>
+    <div id="buttonDiv"></div>
+    <div
+      id="g_id_onload"
+      data-client_id="722778184466-ilt0et74met0u1in6n0sfnijdqj9ccfe.apps.googleusercontent.com"
+      data-callback="handleCredentialResponse"
+    ></div>
+
+    <button id="google_signout"">Signout</button>
+
+    <script>
+      function handleCredentialResponse(response) {
+        const body = { id_token: response.credential };
+        fetch('http://localhost:3000/api/auth/google', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(body)
+        })
+          .then((resp) => resp.json())
+          .then((resp) => {
+            localStorage.setItem('mail', resp.user.mail)
+          })
+          .catch(console.warn);
+      }
+
+      const btn = document.getElementById('google_signout')
+      btn.onclick = () =>{
+        google.accounts.id.revoke(localStorage.getItem('mail'), done =>{
+          localStorage.clear();
+          location.reload()
+        });
+      }
+    </script>
   </body>
 </html>
