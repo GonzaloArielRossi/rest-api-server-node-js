@@ -4,11 +4,6 @@
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script>
 
-      var url = (window.location.hostname.includes('localhost'))
-      ? 'http://localhost:3000/api/auth/google'
-      : 'https://rest-api-server-node-js/api/auth/google'
-
-
       function handleCredentialResponse(response) {
         console.log('Encoded JWT ID token: ' + response.credential);
       }
@@ -35,12 +30,16 @@
     <button id="google_signout"">Signout</button>
 
     <script>
+      var url = (window.location.hostname.includes('localhost'))
+      ? 'http://localhost:3000/api/auth/google'
+      : 'https://rest-api-server-node-js.herokuapp.com/api/auth/google'
+
       function handleCredentialResponse(response) {
         const body = { id_token: response.credential };
         fetch(url, {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type':'application/json'
           },
           body: JSON.stringify(body)
         })
