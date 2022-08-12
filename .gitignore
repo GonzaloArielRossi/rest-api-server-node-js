@@ -1,2 +1,7 @@
 node_modules/
 .env
+uploads/Image Files/*/*.*
+uploads/Document Files/*/*.*
+uploads/Video Files/*/*.*
+uploads/Audio Files/*/*.*
+uploads/Text Files/*/*.*

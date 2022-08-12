@@ -24,10 +24,10 @@ const formats = {
   }
 };
 
-const uploadFile = (files, fileFormat) => {
+const uploadFile = (files, fileFormat, directory) => {
   return new Promise((resolve, reject) => {
     const extensions = formats[fileFormat];
-    const folderName = extensions.folderName;
+    const folderName = `${extensions.folderName}`;
 
     //Extraer Extension del archivo
     const { file } = files;
@@ -45,6 +45,7 @@ const uploadFile = (files, fileFormat) => {
       __dirname,
       '../uploads/',
       folderName,
+      directory,
       tempFileName
     );
 
