@@ -1,7 +1,26 @@
 <!DOCTYPE html>
 <html>
-  <body>
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <head>
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+    <title>Socket Client</title>
+  </head>
+  <body class="container">
+    <!-- <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <div id="buttonDiv"></div>
+    <div
+    id="g_id_onload"
+    data-client_id="722778184466-ilt0et74met0u1in6n0sfnijdqj9ccfe.apps.googleusercontent.com"
+    data-callback="handleCredentialResponse"
+    ></div>
+
+    <button id="google_signout"">Signout</button>
+
     <script>
 
       function handleCredentialResponse(response) {
@@ -19,17 +38,6 @@
         );
         google.accounts.id.prompt(); // also display the One Tap dialog
       };
-    </script>
-    <div id="buttonDiv"></div>
-    <div
-      id="g_id_onload"
-      data-client_id="722778184466-ilt0et74met0u1in6n0sfnijdqj9ccfe.apps.googleusercontent.com"
-      data-callback="handleCredentialResponse"
-    ></div>
-
-    <button id="google_signout"">Signout</button>
-
-    <script>
       var url = (window.location.hostname.includes('localhost'))
       ? 'http://localhost:3000/api/auth/google'
       : 'https://rest-api-server-node-js.herokuapp.com/api/auth/google'
@@ -57,6 +65,29 @@
           location.reload()
         });
       }
-    </script>
+    </script> -->
+
+    <h1 class="mt-2">SOCKET IO CLIENT</h1>
+    <hr />
+
+    <p>
+      Server Status:
+      <span id="lblonline" class="text-success">Online</span>
+      <span id="lbloffline" class="text-danger">Offline</span>
+    </p>
+
+    <div class="row">
+      <div class="col">
+        <input type="text" id="txtMessage" class="form-control" />
+      </div>
+      <div class="col">
+        <button class="btn btn-primary" id="btnSubmit">Submit</button>
+      </div>
+    </div>
+
+    <p id="response"></p>
+
+    <script src="./socket.io/socket.io.js"></script>
+    <script src="./js/socket-client.js"></script>
   </body>
 </html>

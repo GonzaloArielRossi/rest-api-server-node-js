@@ -151,18 +151,8 @@ const getImage = async (req, res = response) => {
         .status(500)
         .json({ msg: 'Error interno del servidor al actualizar la imagen' });
   }
-
   if (model.img) {
-    const imagePath = path.join(
-      __dirname,
-      '../uploads',
-      'Image Files',
-      collection,
-      model.img
-    );
-    if (fs.existsSync(imagePath)) {
-      return res.sendFile(imagePath);
-    }
+    return res.json(model.img);
   }
   placeholder = path.join(__dirname, '../assets', 'placeholder.jpg');
   return res.sendFile(placeholder);
