@@ -3,7 +3,6 @@ const lblonline = document.querySelector('#lblonline');
 const lbloffline = document.querySelector('#lbloffline');
 const txtMessage = document.querySelector('#txtMessage');
 const btnSubmit = document.querySelector('#btnSubmit');
-const response = document.querySelector('#response');
 
 // Socket handling
 const socket = io();
