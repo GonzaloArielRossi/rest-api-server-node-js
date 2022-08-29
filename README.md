@@ -11,6 +11,10 @@ This app was created based on the course "Node: De cero a experto" by Fernando H
 
 [DOCUMENTATION](https://documenter.getpostman.com/view/21502975/VUjPJ5oo)
 
+### Server URL
+
+In order to test the API, assign the {{url}} to: https://rest-api-server-node-js.herokuapp.com/
+
 ## Dependencies
 
 - bcryptjs: 2.4.3,
