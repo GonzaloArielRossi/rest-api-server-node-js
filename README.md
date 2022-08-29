@@ -13,7 +13,7 @@ This app was created based on the course "Node: De cero a experto" by Fernando H
 
 ### Server URL
 
-In order to test the API, assign the environment variable{{url}} to: https://rest-api-server-node-js.herokuapp.com/
+In order to test the API, assign the environment variable {{url}} to: https://rest-api-server-node-js.herokuapp.com/
 
 ## Dependencies
 
